@@ -84,28 +84,96 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/realtime',
+    path: '/analytic',
     component: Layout,
-    redirect: '/realtime',
-    meta: { title: '实时分析', icon: 'documentation' },
+    meta: { title: '分析', icon: 'documentation' },
     children: [
       {
         path: 'realtime',
-        component: () => import('@/views/realtime/index'),
+        component: () => import('@/views/analytic/realtime'),
         name: 'Realtime',
-        meta: { title: '实时监控', icon: 'documentation' }
+        meta: { title: '实时监测', icon: 'documentation' }
       },
       {
-        path: 'statistics',
-        component: () => import('@/views/realtime/statistics'),
-        name: 'Statistics',
-        meta: { title: '综合查询', icon: 'documentation' }
+        path: 'history',
+        component: () => import('@/views/analytic/history'),
+        name: 'History',
+        meta: { title: '历史分析', icon: 'documentation' }
+      }
+    ]
+  },
+  {
+    path: '/statistics',
+    component: Layout,
+    meta: { title: '统计', icon: 'documentation' },
+    children: [
+      {
+        path: 'outRide',
+        component: () => import('@/views/statistics/outRide'),
+        name: 'OutRide',
+        meta: { title: '出乘统计', icon: 'documentation' }
       },
       {
-        path: 'analysis',
-        component: () => import('@/views/realtime/analysis'),
-        name: 'Analysis',
-        meta: { title: '分析报表', icon: 'documentation' }
+        path: 'taskType',
+        component: () => import('@/views/statistics/taskType'),
+        name: 'TaskType',
+        meta: { title: '作业类型统计', icon: 'documentation' }
+      },
+      {
+        path: 'taskTimes',
+        component: () => import('@/views/statistics/taskTimes'),
+        name: 'taskTimes',
+        meta: { title: '作业时间段统计', icon: 'documentation' }
+      }
+    ]
+  },
+  // 分析 analytic
+  //   实时监测 realtime
+  //   历史分析 history
+  // 统计 statistics
+  //   出乘统计 outRide
+  //   作业类型统计 taskType
+  //   作业时间段统计 taskTimes
+  // 系统 system
+  //   设备管理 equipment
+  //   线路管理 lines
+  //   司机管理 driver
+  //   用户管理 user
+  //   日志管理 log
+  {
+    path: '/system',
+    component: Layout,
+    meta: { title: '系统', icon: 'documentation' },
+    children: [
+      {
+        path: 'equipment',
+        component: () => import('@/views/system/equipment'),
+        name: 'Equipment',
+        meta: { title: '设备管理', icon: 'documentation' }
+      },
+      {
+        path: 'lines',
+        component: () => import('@/views/system/lines'),
+        name: 'Lines',
+        meta: { title: '线路管理', icon: 'documentation' }
+      },
+      {
+        path: 'driver',
+        component: () => import('@/views/system/driver'),
+        name: 'Driver',
+        meta: { title: '司机管理', icon: 'documentation' }
+      },
+      {
+        path: 'user',
+        component: () => import('@/views/system/user'),
+        name: 'User',
+        meta: { title: '用户管理', icon: 'documentation' }
+      },
+      {
+        path: 'log',
+        component: () => import('@/views/system/log'),
+        name: 'Log',
+        meta: { title: '日志管理', icon: 'documentation' }
       }
     ]
   }
