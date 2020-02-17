@@ -33,12 +33,12 @@ module.exports = {
     port: port,
     open: false,
     proxy: {
-      '^/api': {
-        target: 'http://192.168.10.130:6001/', // 锦伟
+      '^/plat': {
+        target: 'http://192.168.10.151:8300/', // 锦伟
         ws: true,
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '/'
+          '^/plat': '/api'
         }
       }
     },
