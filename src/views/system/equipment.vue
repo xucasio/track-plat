@@ -223,7 +223,7 @@ export default {
         })
     },
     getList() {
-      list().then(res => {
+      list(this.query).then(res => {
         this.list = res.data.records
       })
     },
