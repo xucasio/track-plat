@@ -156,7 +156,7 @@ export default {
         current: 1,
         status: ''
       },
-      list: [{ id: 1, trainNo: '12306' }],
+      list: [],
       listLoading: false,
       drawer: false,
       drawerTitle: '新增设备',
