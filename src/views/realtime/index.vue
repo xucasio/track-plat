@@ -728,7 +728,7 @@ export default {
       }
     }
   .el-table__body tr.current-row>td{
-    background-color:#316ac5
+    background-color:#1890FF
   }
   }
 

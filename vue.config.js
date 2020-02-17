@@ -5,7 +5,7 @@ const defaultSettings = require('./src/settings.js')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-
+// process
 const name = defaultSettings.title || 'vue Element Admin' // page title
 
 // If your port is set to 80,
@@ -135,7 +135,7 @@ module.exports = {
     config.resolve.symlinks(true) // 设置热更新
   },
   css: {
-    // extract: true, // 自动更新
+    extract: true, // 自动更新
     sourceMap: false,
     modules: false
   }
