@@ -209,7 +209,6 @@ aside {
 
 .filter-container {
   padding-bottom: 10px;
-
   .filter-item {
     display: inline-block;
     vertical-align: middle;
@@ -217,6 +216,9 @@ aside {
   }
   .el-form-item--mini{
     margin-bottom: 0px;
+    .el-form-item__label{
+      font-weight: normal;
+    }
   }
 }
 .options-container{

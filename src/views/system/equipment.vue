@@ -5,7 +5,7 @@
         <el-form-item label="状态">
           <el-select v-model="query.status" placeholder="请选择">
             <el-option
-              v-for="item in [{value: true, label: '线上'}, {value: false, label: '线下'}]"
+              v-for="item in [{value: 2, label: '全部'}, {value: 1, label: '在线'}, {value: 0, label: '离线'}]"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -112,7 +112,7 @@
           <el-form-item label="状态">
             <el-select v-model="temp.status" placeholder="请选择">
               <el-option
-                v-for="item in [{value: true, label: '线上'}, {value: false, label: '线下'}]"
+                v-for="item in [{value: 2, label: '全部'}, {value: 1, label: '在线'}, {value: 0, label: '离线'}]"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
@@ -142,8 +142,9 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        true: '线上',
-        false: '线下'
+        2: '全部',
+        1: '在线',
+        0: '离线'
       }
       return statusMap[status]
     }
@@ -154,7 +155,7 @@ export default {
         total: 0,
         size: 10,
         current: 1,
-        status: ''
+        status: 2
       },
       list: [],
       listLoading: false,
