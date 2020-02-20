@@ -39,42 +39,42 @@
         </el-table-column>
         <el-table-column label="日期" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.trainNo }}</span>
+            <span>{{ row.date }}</span>
           </template>
         </el-table-column>
         <el-table-column label="车次" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.deviceName }}</span>
+            <span>{{ row.runNo }}</span>
           </template>
         </el-table-column>
         <el-table-column label="司机" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.ip }}</span>
+            <span>{{ row.driverName }}</span>
           </template>
         </el-table-column>
         <el-table-column label="开始时间" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.port }}</span>
+            <span>{{ row.beginTime }}</span>
           </template>
         </el-table-column>
         <el-table-column label="结束时间" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.deviceType }}</span>
+            <span>{{ row.endTime }}</span>
           </template>
         </el-table-column>
         <el-table-column label="时长" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.status | statusFilter }}</span>
+            <span>{{ row.duration }}</span>
           </template>
         </el-table-column>
         <el-table-column label="违规次数" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.lineInfo }}</span>
+            <span>{{ row.times }}</span>
           </template>
         </el-table-column>
         <el-table-column label="考勤打卡" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.lineInfo }}</span>
+            <span>{{ row.attendance }}</span>
           </template>
         </el-table-column>
       </el-table>
@@ -109,11 +109,15 @@ export default {
     },
     getList() {
       list(this.query).then(res => {
-        this.list = res.data.records
+        this.list = res.data.records || []
+        this.query.total = res.data.total
       })
     },
     timeChange(arr) {
-
+      if (arr.length > 0) {
+        this.beginTime = arr[0]
+        this.endTime = arr[1]
+      }
     }
   }
 }

@@ -3,7 +3,7 @@ import request from '@/utils/request'
 export function list(query) {
   return request({
     url: '/realtime/list',
-    method: 'get',
+    method: 'post',
     params: query
   })
 }
