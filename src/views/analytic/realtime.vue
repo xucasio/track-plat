@@ -94,6 +94,7 @@ export default {
     getList() {
       list(this.query).then(res => {
         this.list = res.data.records
+        this.query.total = res.data.total
       })
     }
   }
