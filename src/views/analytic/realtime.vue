@@ -3,10 +3,10 @@
     <div class="filter-container">
       <el-form :inline="true" :model="query" class="demo-form-inline">
         <el-form-item label="车次">
-          <el-input v-model="query.name" />
+          <el-input v-model="query.runNo" />
         </el-form-item>
         <el-form-item label="司机">
-          <el-input v-model="query.name" />
+          <el-input v-model="query.driverName" />
         </el-form-item>
         <el-form-item>
           <el-button class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">查询</el-button>
@@ -29,37 +29,37 @@
         </el-table-column>
         <el-table-column label="日期" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.trainNo }}</span>
+            <span>{{ row.date }}</span>
           </template>
         </el-table-column>
         <el-table-column label="车次" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.deviceName }}</span>
+            <span>{{ row.runNo }}</span>
           </template>
         </el-table-column>
         <el-table-column label="司机" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.ip }}</span>
+            <span>{{ row.driverName }}</span>
           </template>
         </el-table-column>
         <el-table-column label="位置" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.ip }}</span>
+            <span>{{ row.location }}</span>
           </template>
         </el-table-column>
         <el-table-column label="时长" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.status | statusFilter }}</span>
+            <span>{{ row.duration | statusFilter }}</span>
           </template>
         </el-table-column>
         <el-table-column label="违规次数" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.lineInfo }}</span>
+            <span>{{ row.times }}</span>
           </template>
         </el-table-column>
         <el-table-column label="考勤" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.lineInfo }}</span>
+            <span>{{ row.attendance }}</span>
           </template>
         </el-table-column>
       </el-table>
