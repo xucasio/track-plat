@@ -95,6 +95,13 @@ export const constantRoutes = [
         meta: { title: '实时监测', icon: 'documentation' }
       },
       {
+        path: 'realDetail',
+        component: () => import('@/views/analytic/realDetail'),
+        name: 'realDetail',
+        hidden: true,
+        meta: { title: '实时监测详情', icon: 'documentation' }
+      },
+      {
         path: 'history',
         component: () => import('@/views/analytic/history'),
         name: 'History',
@@ -127,19 +134,6 @@ export const constantRoutes = [
       }
     ]
   },
-  // 分析 analytic
-  //   实时监测 realtime
-  //   历史分析 history
-  // 统计 statistics
-  //   出乘统计 outRide
-  //   作业类型统计 taskType
-  //   作业时间段统计 taskTimes
-  // 系统 system
-  //   设备管理 equipment
-  //   线路管理 lines
-  //   司机管理 driver
-  //   用户管理 user
-  //   日志管理 log
   {
     path: '/system',
     component: Layout,

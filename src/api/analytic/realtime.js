@@ -1,9 +1,16 @@
 import request from '@/utils/request'
 
-export function list(query) {
+export function list(data) {
   return request({
     url: '/realtime/list',
     method: 'post',
-    params: query
+    data
+  })
+}
+export function detail(data) {
+  return request({
+    url: '/realtime/list',
+    method: 'post',
+    data
   })
 }

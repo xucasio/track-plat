@@ -1,18 +1,5 @@
 <template>
   <div class="app-container">
-    <div class="filter-container">
-      <el-form :inline="true" :model="query" class="demo-form-inline">
-        <el-form-item label="车次">
-          <el-input v-model="query.runNo" />
-        </el-form-item>
-        <el-form-item label="司机">
-          <el-input v-model="query.driverName" />
-        </el-form-item>
-        <el-form-item>
-          <el-button class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">查询</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
     <div class="table-container">
       <el-table
         v-loading="listLoading"
@@ -21,7 +8,6 @@
         fit
         highlight-current-row
         style="width: 100%;"
-        @row-dblclick="rowDblclick"
       >
         <el-table-column label="序号" width="80" align="center">
           <template slot-scope="{row, $index}">
@@ -43,9 +29,14 @@
             <span>{{ row.driverName }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="位置" width="120" align="center">
+        <el-table-column label="开始时间" width="120" align="center">
           <template slot-scope="{row}">
-            <span>{{ row.location }}</span>
+            <span>{{ row.beginTime }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="结束时间" width="120" align="center">
+          <template slot-scope="{row}">
+            <span>{{ row.endTime }}</span>
           </template>
         </el-table-column>
         <el-table-column label="时长" width="120" align="center">
@@ -58,7 +49,7 @@
             <span>{{ row.times }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="考勤" align="center">
+        <el-table-column label="考勤打卡" align="center">
           <template slot-scope="{row}">
             <span>{{ row.attendance }}</span>
           </template>
@@ -69,7 +60,7 @@
   </div>
 </template>
 <script>
-import { list } from '@/api/analytic/realtime'
+import { detail } from '@/api/analytic/realtime'
 import Pagination from '@/components/Pagination'
 export default {
   components: {
@@ -84,22 +75,27 @@ export default {
         size: 10,
         current: 1
       },
+      timerange: [], // 日期范围
       list: [],
       listLoading: false
     }
   },
+  mounted() {
+    if (this.$route.query.id) {
+      const id = this.$route.query.id
+      this.getList(id)
+    } else {
+      this.$message({ type: 'info', message: '无效id!' })
+      this.$router.back(-1)
+    }
+  },
   methods: {
-    handleFilter() {
-      this.getList()
-    },
-    getList() {
-      list(this.query).then(res => {
+    getList(id) {
+      detail({ id }).then(res => {
+        console.log(res)
         this.list = res.data.records || []
         this.query.total = res.data.total
       })
-    },
-    rowDblclick(row) {
-      this.$router.push({ name: 'realDetail', query: { id: row.id }})
     }
   }
 }
